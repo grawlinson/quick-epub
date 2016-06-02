@@ -1,0 +1,13 @@
+doctype xml
+html(xmlns='http://www.w3.org/1999/xhtml', xmlns:epub='http://www.idpf.org/2007/ops')
+	head
+		meta(charset='utf-8')/
+		link(rel='stylesheet', type='text/css', href='../css/style.css')/
+		title=(title + ' - Table of Contents')
+	body
+		nav(epub:type='toc', id='toc')
+			h1 Table of Contents
+			ol
+				for content, index in contents
+					li
+						a(href='./' + content.fileName)=content.title

@@ -1,0 +1,72 @@
+doctype xml
+package(version='3.0', xml:lang=lang, xmlns='http://www.idpf.org/2007/opf', unique-identifier='pub-id')
+	//- METADATA
+	metadata(xmlns:dc="http://purl.org/dc/elements/1.1/")
+		//- COMPULSORY
+		//-IDENTIFIER, LANGUAGE & TITLE
+		dc:identifier(id='pub-id')= 'urn:uuid:' + id
+		meta(refines='#pub-id', property='identifier-type', scheme='xsd:string')='uuid'
+		dc:language=lang
+		dc:title=title
+
+		//- OPTIONAL
+		//- AUTHOR(S)
+		if (Array.isArray(author))
+			if(author.length == 1)
+				dc:creator=author[0]
+				meta(refines='#creator', property='role', scheme='marc:relators')='aut'
+			else
+				each authorName, index in author
+					dc:creator(id='creator'+(index+1))=authorName
+					meta(refines='#creator'+(index+1), property='role', scheme='marc:relators')='aut'
+					meta(refines='#creator'+(index+1), property='displayseq')=(index+1)
+		else
+			dc:creator(id='creator')=author
+			meta(refines='#creator', property='role', scheme='marc:relators')='aut'
+
+		//- DATES
+		dc:date=dates.published
+		meta(property='dcterms:modified')=dates.modified
+
+		//- PUBLISHER
+		if(publisher)
+			dc:publisher=publisher
+
+		//- DESCRIPTION
+		if(description)
+			dc:description=description
+
+		//- IDENTIFIERS: ISBN10/ISBN13/DOI
+		if(identifiers)
+			if(identifiers.isbn10)
+				dc:identifier(id='isbn10')=identifiers.isbn10
+				meta(refines='#isbn10', property='identifier-type', scheme='onix:codelist5')='2'
+
+			if(identifiers.isbn13)
+				dc:identifier(id='isbn13')='urn:isbn:'+identifiers.isbn13
+				meta(refines='#isbn13', property='identifier-type', scheme='onix:codelist5')='15'
+
+			if(identifiers.doi)
+				dc:identifier(id='doi')=identifiers.doi
+				meta(refines='#doi', property='identifier-type', scheme='onix:codelist5')='6'
+
+	//- MANIFEST
+	manifest
+		//- TOC.XHTML (EPUB3), NCX (EPUB2 BACKWARDS COMPATIBILITY)
+		item(id='nav', href='./xhtml/toc.xhtml', properties='nav', media-type='application/xhtml+xml')/
+		item(id='ncx', href='./xhtml/toc.ncx', media-type='application/x-dtbncx+xml')/
+
+		//- CHAPTERS
+		for content, index in contents
+			item(id='chapter_'+(index+1), href='./xhtml/' + content.fileName, media-type='application/xhtml+xml')/
+
+		//- CSS
+		item(id='css', href='./css/style.css', media-type='text/css')/
+
+		//- TODO: Images & Title Page.
+
+	//- SPINE
+	spine(toc='ncx')
+		itemref(idref='nav', linear='no')/
+		for content, index in contents
+			itemref(idref='chapter_'+(index+1), linear='yes')/

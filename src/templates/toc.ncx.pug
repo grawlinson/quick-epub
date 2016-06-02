@@ -1,0 +1,33 @@
+doctype xml
+ncx(xmlns='http://www.daisy.org/z3986/2005/ncx/', version='2005-1', xml:lang=lang)
+	head
+		meta(name='dtb:uid', content='urn:uuid:'+id)/
+		meta(name='dtb:generator', content=generator)/
+		meta(name='dtb:totalPageCount', content='0')/
+		meta(name='dtb:maxPageNumber', content='0')/
+		meta(name='dtb:depth', content='1')/
+
+	//- TITLE
+	docTitle
+		text=title
+
+	//- AUTHOR(S)
+	if (Array.isArray(author))
+		if(author.length == 1)
+			docAuthor
+				text=author[0]
+		else
+			each authorName in author
+				docAuthor
+					text=authorName
+	else
+		docAuthor
+			text=author
+
+	navMap
+		//- CHAPTERS
+		for content, index in contents
+			navPoint(id='chapter_'+(index+1), playOrder=index+1)
+				navLabel
+					text=(index+1)+'. '+content.title
+				content(src=content.fileName)/

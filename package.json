@@ -1,0 +1,41 @@
+{
+  "name": "quick-epub",
+  "version": "1.0.0",
+  "description": "A promise based generator of EPUB 3.0 books.",
+  "main": "./src/quick-epub",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "quick-epub",
+    "promise",
+    "epub",
+    "epub3",
+    "epub-generator",
+    "generator",
+    "books",
+    "book"
+  ],
+  "author": {
+    "name": "George Rawlinson",
+    "email": "george@rawlinson.net.nz"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/grawlinson/quick-epub/issues",
+    "email": "george@rawlinson.net.nz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "grawlinson/quick-epub"
+  },
+  "dependencies": {
+		"archiver": "1.0.0",
+		"bluebird": "3.4.0",
+		"fs-extra": "0.30.0",
+		"lodash": "4.13.1",
+		"node-uuid": "1.4.7",
+		"pug": "2.0.0-alpha8",
+		"uslug": "1.0.4"
+  }
+}
