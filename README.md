@@ -8,12 +8,12 @@ EPUB specification.
 
 ## Will not
 
-* Validate your passed HTML files. Or anything you pass to it, actually.
-* Download images that have links in said HTML files.
+*   Validate your passed HTML files. Or anything you pass to it, actually.
+*   Download images that have links in said HTML files.
 
 ## Will definitely
 
-* Break. There's almost no error handling.
+*   Break. There's almost no error handling.
 
 ## Installation
 
@@ -33,9 +33,9 @@ Creates a file with a given ```data``` object.
 
 ```javascript
 epub.createFile(data).then(function(){
- console.log('book done.');
+  console.log('book done.');
 }).catch(function(error){
- console.error(error);
+  console.error(error);
 });
 ```
 
@@ -43,21 +43,21 @@ epub.createFile(data).then(function(){
 
 The variables of the data object *should* be:
 
-*  `output` Filepath/name of file. Default: Some tempDir folder just above the `node_modules` dir.
-* `title` Title of the book
-* `author` Name of author. Can be either string or array.
-* `contents` Array of chapter objects.
-* `publisher` Whoever published this fantastic EPUB book. (Optional)
-* `description` Self-explanatory. (Optional)
-* `appendChapterTitles` Append the chapter title at the beginning of each chapter. Default: `false` (Optional)
-* `dates` (Optional) Do you know when this was published/modified? Good. Chuck it in. [ISO-8601][url-iso8601] format!
-    *  `published`
-    *  `modified`
-*  `lang` Language. Default: `en` (Optional)
-*  `identifiers`
-    *  [`isbn10`][url-isbn]
-    *  `isbn13`
-    *  [`doi`][url-doi]
+*   `output` Filepath/name of file. Default: Some tempDir folder just above the `node_modules` dir.
+*   `title` Title of the book
+*   `author` Name of author. Can be either string or array.
+*   `contents` Array of chapter objects.
+*   `publisher` Whoever published this fantastic EPUB book. (Optional)
+*   `description` Self-explanatory. (Optional)
+*   `appendChapterTitles` Append the chapter title at the beginning of each chapter. Default: `false` (Optional)
+*   `dates` (Optional) Do you know when this was published/modified? Good. Chuck it in. [ISO-8601][url-iso8601] format!
+    *   `published`
+    *   `modified`
+*   `lang` Language. Default: `en` (Optional)
+*   `identifiers`
+    *   [`isbn10`][url-isbn]
+    *   `isbn13`
+    *   [`doi`][url-doi]
 
 
 `content` is an array filled with `chapter` objects with the following structure:
