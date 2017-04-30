@@ -41,7 +41,7 @@ epub.createFile(data).then(function(){
 
 ### Data Object
 
-The variables of the data object *should* be:
+The properties of the data object *should* be:
 
 *   `output` Filepath/name of file. Default: Some tempDir folder just above the `node_modules` dir.
 *   `title` Title of the book
@@ -64,9 +64,9 @@ The variables of the data object *should* be:
 
 ```javascript
 {
-    id: Number,
-    title: String,
-    data: String
+  id: Number,
+  title: String,
+  data: String
 }
 ```
 
@@ -74,55 +74,54 @@ The variables of the data object *should* be:
 
 ```javascript
 var data = {
- lang: 'engrish',
- title: 'Sample Title',
- author: ['Author One', 'Author Two'],
- publisher: 'Sample Publisher',
- description: 'Something to describe, I guess.',
- contents: [
-  {title: 'First Title', data: 'Initial Data', id: 1},
-  {title: 'II. 2.', data: 'Second Data', id: 2},
-  {title: '3 a.k.a THREE', data: 'Third Lot of Data.', id: 3}
- ],
- identifiers: {
-  isbn10: 'this is definitely not a valid ISBN-10 number',
-  isbn13: 'nor is this a valid ISBN-13 number',
-  doi: 'yep. not valid either.'
- },
- dates: {
-  published: new Date().toISOString().split('.')[0]+ 'Z',
-  modified: new Date().toISOString().split('.')[0]+ 'Z'
- },
- appendChapterTitles: true,
- output: 'yolo.epub'
+  lang: 'en',
+  title: 'White Fang',
+  author: ['Jack London', 'Weedon Smith'],
+  publisher: 'Project Gutenberg',
+  description: 'The story of a man and a wolf.',
+  contents: [
+    {
+      title: 'CHAPTER I - THE TRAIL OF THE MEAT',
+      data: 'Dark spruce forest frowned on either side the frozen waterway.',
+      id: 1
+    },
+    {
+      title: 'CHAPTER II - THE SHE-WOLF',
+      data: 'Breakfast eaten and the slim camp-outfit lashed to the sled, the men turned their backs on the cheery fire and launched out into the darkness.',
+      id: 2
+    },
+    {
+      title: 'CHAPTER III - THE HUNGER CRY',
+      data: 'The day began auspiciously.',
+      id: 3
+    }
+  ],
+  identifiers: {
+    isbn10: 'this is definitely not a valid ISBN-10 number',
+    isbn13: 'nor is this a valid ISBN-13 number',
+    doi: 'yep. not valid either.'
+  },
+  dates: {
+    published: new Date().toISOString().split('.')[0]+ 'Z',
+    modified: new Date().toISOString().split('.')[0]+ 'Z'
+  },
+  appendChapterTitles: true,
+  output: 'Jack London - White Fang.epub'
 };
 ```
 
-## License
+### Acknowledgements
 
-The MIT License (MIT)
+Thanks to:
 
-Copyright (c) 2015 George Rawlinson <mailto:george@rawlinson.net.nz>
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
+*   [Project Gutenberg][url-prj-guten] for all the freely available material to test, especially [White Fang][url-wf]!
+*   cyrilis' [epub-gen][url-epubgen] library
+*   IDPF for their epub validation tool, aptly titled [epubcheck][url-epub-check]
 
 [url-epubgen]:https://github.com/cyrilis/epub-gen
 [url-iso8601]:http://www.iso.org/iso/home/standards/iso8601.htm
 [url-doi]:https://www.doi.org/
 [url-isbn]:http://www.isbn.org/faqs_general_questions#isbn_faq1
+[url-prj-guten]:http://www.gutenberg.org/
+[url-wf]:http://www.gutenberg.org/ebooks/910
+[url-epub-check]:https://github.com/idpf/epubcheck
