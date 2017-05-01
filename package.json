@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "commit": "git-cz",
-    "commitmsg": "validate-commit-msg"
+    "commitmsg": "validate-commit-msg",
+    "lint": "esw *.js src --color",
+    "lint:watch": "npm run lint -- --watch"
   },
   "keywords": [
     "quick-epub",
@@ -43,7 +45,58 @@
   "devDependencies": {
     "commitizen": "2.9.6",
     "cz-conventional-changelog": "2.0.0",
+    "eslint": "3.19.0",
+    "eslint-config-airbnb-base": "11.1.3",
+    "eslint-plugin-import": "2.2.0",
+    "eslint-watch": "3.1.0",
     "validate-commit-msg": "2.12.1"
+  },
+  "eslintConfig": {
+    "rules": {
+      "indent": [
+        2,
+        2,
+        {
+          "SwitchCase": 1
+        }
+      ],
+      "space-before-function-paren": [
+        2,
+        {
+          "anonymous": "always",
+          "named": "never"
+        }
+      ],
+      "no-use-before-define": [
+        2,
+        "nofunc"
+      ],
+      "comma-dangle": [
+        0
+      ],
+      "import/no-extraneous-dependencies": [
+        "error",
+        {
+          "devDependencies": true
+        }
+      ],
+      "no-underscore-dangle": [
+        0
+      ]
+    },
+    "env": {
+      "es6": true,
+      "node": true,
+      "mocha": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module"
+    },
+    "extends": [
+      "eslint:recommended",
+      "airbnb-base"
+    ]
   },
   "config": {
     "commitizen": {
