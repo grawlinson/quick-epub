@@ -1,5 +1,12 @@
 # quick-epub
 
+[![npm][shield-npm-version]](https://www.npmjs.com/package/quick-epub)
+[![MIT License][shield-mit-license]](http://opensource.org/licenses/MIT)
+[![PRs Welcome][shield-prs-welcome]](http://makeapullrequest.com)
+[![Commitizen friendly][shield-commitizen-friendly]](http://commitizen.github.io/cz-cli/)
+[![bitHound dependencies][shield-bithound-deps]]()
+[![bitHound devDependencies][shield-bithound-devdeps]]()
+
 Quickly generate valid EPUB 3.0.1 documents.
 
 This library is based on cyrilis' [epub-gen][url-epubgen], and is more of a
@@ -125,3 +132,9 @@ Thanks to:
 [url-prj-guten]:http://www.gutenberg.org/
 [url-wf]:http://www.gutenberg.org/ebooks/910
 [url-epub-check]:https://github.com/idpf/epubcheck
+[shield-npm-version]:https://img.shields.io/npm/v/quick-epub.svg
+[shield-mit-license]:https://img.shields.io/github/license/grawlinson/quick-epub.svg
+[shield-prs-welcome]:https://img.shields.io/badge/PRs-welcome-brightgreen.svg
+[shield-commitizen-friendly]:https://img.shields.io/badge/commitizen-friendly-brightgreen.svg
+[shield-bithound-deps]:https://img.shields.io/bithound/dependencies/github/grawlinson/quick-epub.svg
+[shield-bithound-devdeps]:https://img.shields.io/bithound/devDependencies/github/grawlinson/quick-epub.svg
