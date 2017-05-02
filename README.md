@@ -94,7 +94,7 @@ var data = {
     },
     {
       title: 'CHAPTER II - THE SHE-WOLF',
-      data: 'Breakfast eaten and the slim camp-outfit lashed to the sled, the men turned their backs on the cheery fire and launched out into the darkness.',
+      data: 'Breakfast eaten and the slim camp-outfit lashed to the sled...',
       id: 2
     },
     {
