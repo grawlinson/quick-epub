@@ -1,6 +1,6 @@
 {
   "name": "quick-epub",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A promise based generator of EPUB 3.0 books.",
   "main": "dist/index.js",
   "scripts": {
