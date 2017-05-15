@@ -12,6 +12,11 @@
     "lint": "esw *.js src --color",
     "lint:watch": "npm run lint -- --watch"
   },
+  "files": [
+    "dist/**",
+    "README.md",
+    "LICENSE.md"
+  ],
   "keywords": [
     "quick-epub",
     "promise",

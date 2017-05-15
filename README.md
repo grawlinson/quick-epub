@@ -93,7 +93,7 @@ The following properties are optional, it is recommended to at least set `output
 #### Example
 
 ```javascript
-var data = {
+const data = {
   // compulsory
   title: 'White Fang',
   author: ['Jack London', 'Weedon Smith'],
@@ -127,7 +127,7 @@ var data = {
     isbn13: 'nor is this a valid ISBN-13 number',
     doi: 'yep. not valid either.'
   }
-};
+}
 ```
 
 ### Acknowledgements
