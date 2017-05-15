@@ -1,11 +1,12 @@
 # quick-epub
 
-[![npm][shield-npm-version]](https://www.npmjs.com/package/quick-epub)
-[![MIT License][shield-mit-license]](http://opensource.org/licenses/MIT)
-[![PRs Welcome][shield-prs-welcome]](http://makeapullrequest.com)
-[![Commitizen friendly][shield-commitizen-friendly]](http://commitizen.github.io/cz-cli/)
-[![bitHound dependencies][shield-bithound-deps]]()
-[![bitHound devDependencies][shield-bithound-devdeps]]()
+[![npm][shield-npm-version]][url-npm-version]
+[![MIT License][shield-mit-license]][url-mit-license]
+[![PRs Welcome][shield-prs-welcome]][url-prs-welcome]
+[![Commitizen friendly][shield-commitizen-friendly]][url-commitizen-friendly]
+[![JavaScript Style Guide][shield-standard-style]][url-standard-style]
+[![dependencies][shield-deps]][url-deps]
+[![devDependencies][shield-devdeps]][url-deps]
 
 Quickly generate valid EPUB 3.0.1 documents.
 
@@ -15,14 +16,12 @@ EPUB specification.
 
 ## Will not
 
-*   Validate your passed HTML files. Or anything you pass to it, actually.
-*   Download images that have links in said HTML files.
-
-## Will definitely
-
-*   Break. There's almost no error handling.
+*   Validate your passed HTML files
+*   Process images in said HTML files
 
 ## Installation
+
+This module is distributed via [npm][url-npm] which is bundled with [node][url-node] and should be installed as one of your project's dependencies:
 
 ```javascript
 npm install quick-epub --save
@@ -30,90 +29,104 @@ npm install quick-epub --save
 
 ## Usage
 
-```javascript
-var epub = require('quick-epub');
-```
-
 ### epub.createFile(data)
 
 Creates a file with a given ```data``` object.
 
 ```javascript
-epub.createFile(data).then(function(){
-  console.log('book done.');
-}).catch(function(error){
-  console.error(error);
-});
+// import the module
+const epub = require('quick-epub');
+
+// minimal data object
+const data = {
+  title: 'White Fang',
+  author: ['Jack London'],
+  chapters: [
+    {
+      title: 'CHAPTER I - THE TRAIL OF THE MEAT',
+      content: 'Dark spruce forest frowned on either side the frozen waterway.'
+    },
+    {
+      title: 'CHAPTER II - THE SHE-WOLF',
+      content: 'Breakfast eaten and the slim camp-outfit lashed to the sled...'
+    },
+    {
+      title: 'CHAPTER III - THE HUNGER CRY',
+      content: 'The day began auspiciously.'
+    }
+  ]
+}
+
+// create epub
+epub.createFile(data)
+  .then(() => console.log('book done.'))
+  .catch(e => console.error(e))
 ```
 
 ### Data Object
 
-The properties of the data object *should* be:
+At a minimum, the data object must have three properties:
 
-*   `output` Filepath/name of file. Default: Some tempDir folder just above the `node_modules` dir.
-*   `title` Title of the book
-*   `author` Name of author. Can be either string or array.
-*   `contents` Array of chapter objects.
-*   `publisher` Whoever published this fantastic EPUB book. (Optional)
-*   `description` Self-explanatory. (Optional)
-*   `appendChapterTitles` Append the chapter title at the beginning of each chapter. Default: `false` (Optional)
-*   `dates` (Optional) Do you know when this was published/modified? Good. Chuck it in. [ISO-8601][url-iso8601] format!
+*   `title` - Title of the book. Must be a `String`.
+*   `author` - Author(s) of the book. Must be an `Array` containing `String` types.
+*   `chapters` - Actual content of the book. Must be an `Array` of `Object` types with the following properties:
+    *   `title` - Title of the chapter. Must be a `String`.
+    *   `content` - Main content of the chapter. Must be a `String`.
+
+#### Optional properties
+
+The following properties are optional, it is recommended to at least set `output` to something sane.
+
+*   `output` - Filepath/name of file. Defaults to a randomly named epub in the directory of the calling script
+*   `appendChapterTitles` - If set, appends the chapter title at the beginning of each chapter. Defaults to `false`
+*   `lang` - Language. Defaults to `en`
+*   `publisher` - Whoever published this fantastic EPUB
+*   `description` - A short blurb/summary of the book
+*   `dates` - Published/modified dates. Both default to [ISO-8601][url-iso8601] `Date` types formatted as `String` types
     *   `published`
     *   `modified`
-*   `lang` Language. Default: `en` (Optional)
-*   `identifiers`
+*   `identifiers` - Digital object identifiers.
     *   [`isbn10`][url-isbn]
     *   `isbn13`
     *   [`doi`][url-doi]
-
-
-`content` is an array filled with `chapter` objects with the following structure:
-
-```javascript
-{
-  id: Number,
-  title: String,
-  data: String
-}
-```
 
 #### Example
 
 ```javascript
 var data = {
-  lang: 'en',
+  // compulsory
   title: 'White Fang',
   author: ['Jack London', 'Weedon Smith'],
-  publisher: 'Project Gutenberg',
-  description: 'The story of a man and a wolf.',
-  contents: [
+  chapters: [
     {
       title: 'CHAPTER I - THE TRAIL OF THE MEAT',
-      data: 'Dark spruce forest frowned on either side the frozen waterway.',
-      id: 1
+      content: 'Dark spruce forest frowned on either side the frozen waterway.'
     },
     {
       title: 'CHAPTER II - THE SHE-WOLF',
-      data: 'Breakfast eaten and the slim camp-outfit lashed to the sled...',
-      id: 2
+      content: 'Breakfast eaten and the slim camp-outfit lashed to the sled...'
     },
     {
       title: 'CHAPTER III - THE HUNGER CRY',
-      data: 'The day began auspiciously.',
-      id: 3
+      content: 'The day began auspiciously.'
     }
   ],
+  // optional (default values created)
+  output: 'Jack London - White Fang.epub',
+  appendChapterTitles: true,
+  lang: 'en',
+  dates: {
+    published: new Date().toISOString(),
+    modified: new Date().toISOString()
+  },
+  // optional (no default values created)
+  publisher: 'Project Gutenberg',
+  description: 'The story of a man and a wolf.',
   identifiers: {
     isbn10: 'this is definitely not a valid ISBN-10 number',
     isbn13: 'nor is this a valid ISBN-13 number',
     doi: 'yep. not valid either.'
-  },
-  dates: {
-    published: new Date().toISOString().split('.')[0]+ 'Z',
-    modified: new Date().toISOString().split('.')[0]+ 'Z'
-  },
-  appendChapterTitles: true,
-  output: 'Jack London - White Fang.epub'
+  }
 };
 ```
 
@@ -133,8 +146,17 @@ Thanks to:
 [url-wf]:http://www.gutenberg.org/ebooks/910
 [url-epub-check]:https://github.com/idpf/epubcheck
 [shield-npm-version]:https://img.shields.io/npm/v/quick-epub.svg
+[url-npm-version]:https://www.npmjs.com/package/quick-epub
 [shield-mit-license]:https://img.shields.io/github/license/grawlinson/quick-epub.svg
+[url-mit-license]:http://opensource.org/licenses/MIT
 [shield-prs-welcome]:https://img.shields.io/badge/PRs-welcome-brightgreen.svg
+[url-prs-welcome]:http://makeapullrequest.com
+[shield-standard-style]:https://img.shields.io/badge/code_style-standard-brightgreen.svg
+[url-standard-style]:https://standardjs.com
+[url-commitizen-friendly]:https://commitizen.github.io/cz-cli/
 [shield-commitizen-friendly]:https://img.shields.io/badge/commitizen-friendly-brightgreen.svg
-[shield-bithound-deps]:https://img.shields.io/bithound/dependencies/github/grawlinson/quick-epub.svg
-[shield-bithound-devdeps]:https://img.shields.io/bithound/devDependencies/github/grawlinson/quick-epub.svg
+[shield-deps]:https://img.shields.io/bithound/dependencies/github/grawlinson/quick-epub.svg
+[shield-devdeps]:https://img.shields.io/bithound/devDependencies/github/grawlinson/quick-epub.svg
+[url-deps]:https://www.bithound.io/github/grawlinson/quick-epub/master/dependencies/npm
+[url-npm]:https://www.npmjs.com
+[url-node]:https://nodejs.org
