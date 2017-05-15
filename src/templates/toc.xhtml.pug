@@ -8,6 +8,6 @@ html(xmlns='http://www.w3.org/1999/xhtml', xmlns:epub='http://www.idpf.org/2007/
 		nav(epub:type='toc', id='toc')
 			h1 Table of Contents
 			ol
-				for content, index in contents
+				for chapter, index in chapters
 					li
-						a(href='./' + content.fileName)=content.title
+						a(href='./' + chapter.name)=chapter.title

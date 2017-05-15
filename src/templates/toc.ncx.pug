@@ -1,5 +1,5 @@
 doctype xml
-ncx(xmlns='http://www.daisy.org/z3986/2005/ncx/', version='2005-1', xml:lang=lang)
+ncx(xmlns='http://www.daisy.org/z3986/2005/ncx/', version='2005-1', xml:lang=language)
 	head
 		meta(name='dtb:uid', content='urn:uuid:'+id)/
 		meta(name='dtb:generator', content=generator)/
@@ -26,8 +26,8 @@ ncx(xmlns='http://www.daisy.org/z3986/2005/ncx/', version='2005-1', xml:lang=lan
 
 	navMap
 		//- CHAPTERS
-		for content, index in contents
+		for chapter, index in chapters
 			navPoint(id='chapter_'+(index+1), playOrder=index+1)
 				navLabel
-					text=(index+1)+'. '+content.title
-				content(src=content.fileName)/
+					text=(index+1)+'. '+chapter.title
+				content(src=chapter.name)/

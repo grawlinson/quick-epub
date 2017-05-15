@@ -1,19 +1,19 @@
 doctype xml
-package(version='3.0', xml:lang=lang, xmlns='http://www.idpf.org/2007/opf', unique-identifier='pub-id')
+package(version='3.0', xml:lang=language, xmlns='http://www.idpf.org/2007/opf', unique-identifier='pub-id')
 	//- METADATA
 	metadata(xmlns:dc="http://purl.org/dc/elements/1.1/")
 		//- COMPULSORY
 		//-IDENTIFIER, LANGUAGE & TITLE
 		dc:identifier(id='pub-id')= 'urn:uuid:' + id
 		meta(refines='#pub-id', property='identifier-type', scheme='xsd:string')='uuid'
-		dc:language=lang
+		dc:language=language
 		dc:title=title
 
 		//- OPTIONAL
 		//- AUTHOR(S)
 		if (Array.isArray(author))
 			if(author.length == 1)
-				dc:creator=author[0]
+				dc:creator(id='creator')=author[0]
 				meta(refines='#creator', property='role', scheme='marc:relators')='aut'
 			else
 				each authorName, index in author
@@ -57,16 +57,16 @@ package(version='3.0', xml:lang=lang, xmlns='http://www.idpf.org/2007/opf', uniq
 		item(id='ncx', href='./xhtml/toc.ncx', media-type='application/x-dtbncx+xml')/
 
 		//- CHAPTERS
-		for content, index in contents
-			item(id='chapter_'+(index+1), href='./xhtml/' + content.fileName, media-type='application/xhtml+xml')/
+		for chapter, index in chapters
+			item(id='chapter_'+(index+1), href='./xhtml/' + chapter.name, media-type='application/xhtml+xml')/
 
 		//- CSS
 		item(id='css', href='./css/style.css', media-type='text/css')/
 
-		//- TODO: Images & Title Page.
+		//- COVER PAGE?
 
 	//- SPINE
 	spine(toc='ncx')
 		itemref(idref='nav', linear='no')/
-		for content, index in contents
+		for chapter, index in chapters
 			itemref(idref='chapter_'+(index+1), linear='yes')/
