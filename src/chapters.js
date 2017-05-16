@@ -35,6 +35,14 @@ const generateChapter = (chapter, appendChapterTitles = false, language = 'en') 
   })
 
 const generateChapters = data => new Promise((resolve, reject) => {
+  // error checking
+  if (data === null || data === undefined) {
+    return reject(new Error(`data should not be empty`))
+  } else if (typeof data !== 'object') {
+    return reject(new Error(`data is not an object: ${data}`))
+  } else if (typeof data.chapters !== 'object') {
+    return reject(new Error(`chapters is not an object: ${typeof data.chapters}`))
+  }
   Promise.map(data.chapters, chapter =>
     generateChapter(
       chapter,

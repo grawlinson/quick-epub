@@ -6,15 +6,15 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "babel --copy-files --out-dir dist --ignore *.test.js src",
-    "precommit": "npm run lint && npm run test",
+    "precommit": "yarn lint && yarn test",
     "commit": "git-cz",
     "commitmsg": "validate-commit-msg",
     "test": "cross-env NODE_ENV=test mocha --ui bdd --reporter spec --colors --compilers js:babel-core/register src --recursive",
-    "test:watch": "npm run test -- --watch",
-    "test:coverage": "nyc npm run test",
-    "test:report": "coveralls < ./coverage/lcov.info",
+    "test:watch": "yarn test -- --watch",
+    "test:coverage": "nyc yarn test",
+    "test:coveralls": "coveralls < ./coverage/lcov.info",
     "lint": "esw *.js src --color",
-    "lint:watch": "npm run lint -- --watch"
+    "lint:watch": "yarn lint -- --watch"
   },
   "files": [
     "dist/",
