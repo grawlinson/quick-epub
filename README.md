@@ -5,6 +5,9 @@
 [![PRs Welcome][shield-prs-welcome]][url-prs-welcome]
 [![Commitizen friendly][shield-commitizen-friendly]][url-commitizen-friendly]
 [![JavaScript Style Guide][shield-standard-style]][url-standard-style]
+
+[![Build status][shield-build-status]][url-build-status]
+[![Coverage status][shield-coverage-status]][url-coverage-status]
 [![dependencies][shield-deps]][url-deps]
 [![devDependencies][shield-devdeps]][url-deps]
 
@@ -155,6 +158,10 @@ Thanks to:
 [url-standard-style]:https://standardjs.com
 [url-commitizen-friendly]:https://commitizen.github.io/cz-cli/
 [shield-commitizen-friendly]:https://img.shields.io/badge/commitizen-friendly-brightgreen.svg
+[shield-build-status]:https://img.shields.io/travis/grawlinson/quick-epub.svg
+[url-build-status]:https://travis-ci.org/grawlinson/quick-epub
+[shield-coverage-status]:https://img.shields.io/coveralls/grawlinson/quick-epub.svg
+[url-coverage-status]:https://coveralls.io/github/grawlinson/quick-epub
 [shield-deps]:https://img.shields.io/bithound/dependencies/github/grawlinson/quick-epub.svg
 [shield-devdeps]:https://img.shields.io/bithound/devDependencies/github/grawlinson/quick-epub.svg
 [url-deps]:https://www.bithound.io/github/grawlinson/quick-epub/master/dependencies/npm
