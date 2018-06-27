@@ -9,6 +9,12 @@
         ".czrc"
       ],
       "options": { "parser": "json" }
+    },
+    {
+      "files": ["README.md"],
+      "options": {
+        "parser": "markdown"
+      }
     }
   ]
 }
