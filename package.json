@@ -5,16 +5,16 @@
   "main": "dist/index.js",
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "babel --copy-files --out-dir dist --ignore *.test.js src",
-    "precommit": "npm run lint && npm run test",
-    "commit": "git-cz",
-    "commitmsg": "validate-commit-msg",
-    "test": "cross-env NODE_ENV=test mocha --ui bdd --reporter spec --colors --compilers js:babel-core/register src --recursive",
-    "test:watch": "npm run test -- --watch",
-    "test:coverage": "nyc npm run test",
+    "build": "babel src --out-dir dist --ignore '**/*.test.js'",
+    "precommit": "lint-staged && yarn lint && yarn test",
+    "cm": "git-cz",
+    "commitmsg": "commitlint -x @commitlint/config-conventional -E GIT_PARAMS",
+    "test": "cross-env NODE_ENV=test mocha --ui bdd --reporter spec --colors --require @babel/register src --recursive",
+    "test:watch": "yarn test --watch",
+    "test:coverage": "nyc yarn test",
     "test:coveralls": "coveralls < ./coverage/lcov.info",
-    "lint": "esw *.js src --color",
-    "lint:watch": "npm run lint -- --watch"
+    "lint": "esw '**/*.js' --color src",
+    "lint:watch": "yarn lint --watch"
   },
   "files": [
     "dist/",
@@ -42,7 +42,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "grawlinson/quick-epub"
+    "url": "github:grawlinson/quick-epub"
   },
   "dependencies": {
     "archiver": "2.1.1",
@@ -55,34 +55,30 @@
     "uuid": "3.3.0"
   },
   "devDependencies": {
-    "babel-cli": "6.24.1",
-    "babel-core": "6.24.1",
+    "@babel/cli": "7.0.0-beta.51",
+    "@babel/core": "7.0.0-beta.51",
+    "@babel/preset-env": "7.0.0-beta.51",
+    "@babel/preset-stage-2": "7.0.0-beta.51",
+    "@babel/register": "7.0.0-beta.51",
+    "@commitlint/cli": "7.0.0",
+    "@commitlint/config-conventional": "7.0.1",
     "babel-plugin-add-module-exports": "0.2.1",
-    "babel-plugin-istanbul": "4.1.3",
-    "babel-preset-env": "1.4.0",
-    "babel-preset-stage-2": "6.24.1",
-    "chai": "3.5.0",
+    "babel-plugin-istanbul": "4.1.6",
+    "chai": "4.1.2",
     "chai-files": "1.4.0",
-    "commitizen": "2.9.6",
-    "coveralls": "2.13.1",
-    "cross-env": "5.0.0",
-    "cz-conventional-changelog": "2.0.0",
-    "eslint": "3.19.0",
-    "eslint-config-standard": "10.2.1",
-    "eslint-plugin-import": "2.2.0",
-    "eslint-plugin-node": "4.2.2",
-    "eslint-plugin-promise": "3.5.0",
-    "eslint-plugin-standard": "3.0.1",
-    "eslint-watch": "3.1.0",
-    "husky": "0.13.3",
-    "mocha": "3.4.1",
-    "nyc": "10.3.2",
-    "rimraf": "2.6.1",
-    "validate-commit-msg": "2.12.1"
-  },
-  "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
-    }
+    "commitizen": "2.10.1",
+    "coveralls": "3.0.1",
+    "cross-env": "5.2.0",
+    "cz-conventional-changelog": "2.1.0",
+    "eslint": "5.0.1",
+    "eslint-config-prettier": "2.9.0",
+    "eslint-plugin-prettier": "2.6.1",
+    "eslint-watch": "3.1.5",
+    "husky": "0.14.3",
+    "lint-staged": "7.2.0",
+    "mocha": "5.2.0",
+    "nyc": "12.0.2",
+    "prettier": "1.13.6",
+    "rimraf": "2.6.2"
   }
 }

@@ -1,0 +1,14 @@
+{
+  "overrides": [
+    {
+      "files": [
+        ".prettierrc",
+        ".eslintrc.json",
+        ".nycrc",
+        ".eslintrc.json",
+        ".czrc"
+      ],
+      "options": { "parser": "json" }
+    }
+  ]
+}
