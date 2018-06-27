@@ -13,7 +13,7 @@
     "test:watch": "yarn test --watch",
     "test:coverage": "nyc yarn test",
     "test:coveralls": "coveralls < ./coverage/lcov.info",
-    "lint": "esw '**/*.js' --color src",
+    "lint": "esw --color src",
     "lint:watch": "yarn lint --watch"
   },
   "files": [
@@ -73,7 +73,7 @@
     "eslint": "5.0.1",
     "eslint-config-prettier": "2.9.0",
     "eslint-plugin-prettier": "2.6.1",
-    "eslint-watch": "3.1.5",
+    "eslint-watch": "4.0.0",
     "husky": "0.14.3",
     "lint-staged": "7.2.0",
     "mocha": "5.2.0",

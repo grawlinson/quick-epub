@@ -555,6 +555,13 @@
     "@babel/helper-regex" "7.0.0-beta.51"
     regexpu-core "^4.1.3"
 
+"@babel/polyfill@^7.0.0-beta.51":
+  version "7.0.0-beta.51"
+  resolved "https://registry.yarnpkg.com/@babel/polyfill/-/polyfill-7.0.0-beta.51.tgz#f880a16825571729dceeb76a9bbe74c06321e756"
+  dependencies:
+    core-js "^2.5.7"
+    regenerator-runtime "^0.11.1"
+
 "@babel/preset-env@7.0.0-beta.51":
   version "7.0.0-beta.51"
   resolved "https://registry.yarnpkg.com/@babel/preset-env/-/preset-env-7.0.0-beta.51.tgz#5b580e6e9e8304166c1317017e863c06dcfc04a2"
@@ -1976,10 +1983,11 @@ eslint-visitor-keys@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz#3f3180fb2e291017716acb4c9d6d5b5c34a6a81d"
 
-eslint-watch@3.1.5:
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/eslint-watch/-/eslint-watch-3.1.5.tgz#52072135b45f07230b5e4df67354804eb8d6f2c8"
+eslint-watch@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-watch/-/eslint-watch-4.0.0.tgz#756031c8edcc02dd323c6d1677d2e528f4c076d6"
   dependencies:
+    "@babel/polyfill" "^7.0.0-beta.51"
     babel-polyfill "^6.20.0"
     bluebird "^3.5.1"
     chalk "^2.1.0"
@@ -4454,7 +4462,7 @@ regenerator-runtime@^0.10.0, regenerator-runtime@^0.10.5:
   version "0.10.5"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.10.5.tgz#336c3efc1220adcedda2c9fab67b5a7955a33658"
 
-regenerator-runtime@^0.11.0:
+regenerator-runtime@^0.11.0, regenerator-runtime@^0.11.1:
   version "0.11.1"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
 
