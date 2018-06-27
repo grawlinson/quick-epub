@@ -1,5 +1,4 @@
-import Promise from "bluebird";
-import padStart from "lodash.padstart";
+import pMap from "p-map";
 import uslug from "uslug";
 import { resolve as resolvePath } from "path";
 import { compileFile } from "pug";
@@ -54,18 +53,16 @@ const generateChapters = data =>
         new Error(`chapters is not an object: ${typeof data.chapters}`)
       );
     }
-    Promise.map(data.chapters, chapter =>
+    pMap(data.chapters, chapter =>
       generateChapter(chapter, data.appendChapterTitles, data.language)
     )
       .then(html => {
         const maxLength = data.chapters.length.toString().length;
         data.chapters.map((chapter, index) => {
           chapter.html = html[index];
-          chapter.name = `${padStart(
-            (index + 1).toString(),
-            maxLength,
-            "0"
-          )}_${uslug(chapter.title)}.xhtml`;
+          chapter.name = `${(index + 1)
+            .toString()
+            .padStart(maxLength, "0")}_${uslug(chapter.title)}.xhtml`;
 
           return chapter;
         });
