@@ -1,0 +1,6 @@
+{
+  "hooks": {
+    "commit-msg": "commitlint -x @commitlint/config-conventional -E HUSKY_GIT_PARAMS",
+    "pre-commit": "lint-staged && yarn lint && yarn test"
+  }
+}

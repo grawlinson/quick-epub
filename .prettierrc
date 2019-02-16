@@ -6,7 +6,8 @@
         ".eslintrc.json",
         ".nycrc",
         ".eslintrc.json",
-        ".czrc"
+        ".czrc",
+        ".huskyrc"
       ],
       "options": { "parser": "json" }
     },
