@@ -7,12 +7,6 @@
           "node": 8
         }
       }
-    ],
-    [
-      "@babel/preset-stage-2",
-      {
-        "decoratorsLegacy": true
-      }
     ]
   ],
   "plugins": ["add-module-exports"],
