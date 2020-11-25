@@ -51,7 +51,7 @@
     "pug": "2.0.3",
     "uslug": "1.0.4",
     "uuid": "3.3.2",
-    "snyk": "^1.316.1"
+    "snyk": "^1.425.4"
   },
   "devDependencies": {
     "@babel/cli": "7.2.3",
